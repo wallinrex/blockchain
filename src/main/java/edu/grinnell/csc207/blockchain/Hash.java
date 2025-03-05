@@ -6,7 +6,7 @@ import java.util.Arrays;
  * A wrapper class over a hash value (a byte array).
  */
 public class Hash {
-    
+
     private byte[] data;
 
     public Hash(byte[] data) {
@@ -40,7 +40,7 @@ public class Hash {
     public String toString() {
         String dataString = "";
         for (int i = 0; i < this.data.length; i++) {
-            dataString += String.format("%x", Byte.toUnsignedInt(this.data[i]));
+            dataString += String.format("%02x", Byte.toUnsignedInt(this.data[i]));
         }
         return dataString;
     }
