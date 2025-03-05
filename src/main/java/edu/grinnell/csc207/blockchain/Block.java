@@ -45,7 +45,7 @@ public class Block {
      * @return the calculated hash in a byte array
      * @throws NoSuchAlgorithmException if MessageDigest.getInstance is passed an invalid algorithm
      */
-    public byte[] calculateHash() throws NoSuchAlgorithmException {
+    private byte[] calculateHash() throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("sha-256");
         md.update(ByteBuffer.allocate(4).putInt(this.num).array());
         md.update(ByteBuffer.allocate(4).putInt(this.amount).array());
@@ -105,5 +105,5 @@ public class Block {
         return String.format("Block %d (Amount: %d, Nonce: %d, prevHash: %s, hash: %s)",
                              this.num, this.amount, this.nonce, this.prevHash.toString(),
                              this.currHash.toString());
-    }
+    } // this is going to have problems with the first block
 }
