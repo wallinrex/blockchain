@@ -6,6 +6,7 @@ import java.util.Arrays;
  * A wrapper class over a hash value (a byte array).
  */
 public class Hash {
+    
     private byte[] data;
 
     public Hash(byte[] data) {
@@ -25,7 +26,11 @@ public class Hash {
      * @return true if the first three bytes are 0, false otherwise
      */
     public boolean isValid() {
-        return this.data[0] == 0 && this.data[1] == 0 && this.data[2] == 0;
+        if (this.data.length > 2) {
+            return this.data[0] == 0 && this.data[1] == 0 && this.data[2] == 0;
+        } else {
+            return false;
+        }
     }
 
     /**
