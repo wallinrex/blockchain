@@ -19,6 +19,15 @@ public class Block {
 
     private Hash currHash;
 
+    /**
+     * Block constructor that finds a valid nonce and hash
+     * 
+     * @param num      The number of the new block
+     * @param amount   The amount of the transaction recorded by the new block
+     * @param prevHash The hash of the previous block
+     * @throws NoSuchAlgorithmException If MessageDigest.getInstance is passed an
+     *                                  invalid algorithm
+     */
     public Block(int num, int amount, Hash prevHash) throws NoSuchAlgorithmException {
         this.num = num;
         this.amount = amount;
@@ -31,6 +40,17 @@ public class Block {
         }
     }
 
+    /**
+     * Block constructor that just computes the hash from the given data; doesn't
+     * check whether the hash is valid
+     * 
+     * @param num      The number of the new block
+     * @param amount   The amount of the transaction recorded by the new block
+     * @param prevHash The hash of the previous block
+     * @param nonce    The nonce of the new block
+     * @throws NoSuchAlgorithmException If MessageDigest.getInstance is passed an
+     *                                  invalid algorithm
+     */
     public Block(int num, int amount, Hash prevHash, long nonce) throws NoSuchAlgorithmException {
         this.num = num;
         this.amount = amount;

@@ -9,6 +9,11 @@ public class Hash {
 
     private byte[] data;
 
+    /**
+     * Constructor for the Hash wrapper class
+     * 
+     * @param data The hash to be wrapped up
+     */
     public Hash(byte[] data) {
         this.data = data;
     }

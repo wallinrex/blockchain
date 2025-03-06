@@ -31,6 +31,13 @@ public class BlockChain {
 
     private int bob;
 
+    /**
+     * BlockChain constructor that creates a block with the specified initial value
+     * 
+     * @param initial The initial amount of money Alice has
+     * @throws NoSuchAlgorithmException If MessageDigest.getInstance is passed an
+     *                                  invalid algorithm
+     */
     public BlockChain(int initial) throws NoSuchAlgorithmException {
         Block data = new Block(0, initial, null);
         Node newNode = new Node(data, null);
@@ -72,11 +79,11 @@ public class BlockChain {
      * @throws IllegalArgumentException If the block is invalid
      */
     public void append(Block blk) throws IllegalArgumentException {
-        if (!blk.getPrevHash().equals(this.last.data.getHash()) ||
-                !blk.getHash().isValid() ||
-                this.alice + blk.getAmount() < 0 ||
-                this.bob - blk.getAmount() < 0 ||
-                blk.getNum() != this.last.data.getNum() + 1) {
+        if (!blk.getPrevHash().equals(this.last.data.getHash())
+                || !blk.getHash().isValid()
+                || this.alice + blk.getAmount() < 0
+                || this.bob - blk.getAmount() < 0
+                || blk.getNum() != this.last.data.getNum() + 1) {
             throw new IllegalArgumentException();
         } else {
             Node newNode = new Node(blk, null);
@@ -125,9 +132,9 @@ public class BlockChain {
      */
     public boolean isValidBlockChain() {
         Node temp = this.first;
-        if (temp.data.getNum() != 0 ||
-                !temp.data.getHash().isValid() ||
-                this.alice < 0) {
+        if (temp.data.getNum() != 0
+                || !temp.data.getHash().isValid()
+                || this.alice < 0) {
             return false;
         }
         if (temp.next == null) {
@@ -137,11 +144,11 @@ public class BlockChain {
         temp = temp.next;
         int index = 1;
         while (temp != null) {
-            if (temp.data.getNum() != index ||
-                    !temp.data.getPrevHash().equals(previous) ||
-                    !temp.data.getHash().isValid() ||
-                    this.alice < 0 ||
-                    this.bob < 0) {
+            if (temp.data.getNum() != index
+                    || !temp.data.getPrevHash().equals(previous)
+                    || !temp.data.getHash().isValid()
+                    || this.alice < 0
+                    || this.bob < 0) {
                 return false;
             }
             index++;
