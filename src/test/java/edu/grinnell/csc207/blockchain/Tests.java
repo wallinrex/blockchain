@@ -85,4 +85,32 @@ public class Tests {
         assertEquals(true, test.getPrevHash().isValid());
         assertEquals(true, test.getHash().isValid());
     }
+
+    @Test
+    @DisplayName("One Element Blockchains")
+    public void oneElementBlockchains() throws NoSuchAlgorithmException {
+        BlockChain valid = new BlockChain(100);
+        assertEquals(1, valid.getSize());
+        assertEquals(true, valid.isValidBlockChain());
+        assertEquals(false, valid.removeLast());
+        BlockChain invalid = new BlockChain(-100);
+        assertEquals(1, invalid.getSize());
+        assertEquals(false, invalid.isValidBlockChain());
+        assertEquals(false, invalid.removeLast());
+    }
+
+    @Test
+    @DisplayName("Valid Multi-Element Blockchain")
+    public void validMultiElementBlockchain() throws NoSuchAlgorithmException {
+        BlockChain valid = new BlockChain(300);
+        valid.append(valid.mine(-100));
+        assertEquals(2, valid.getSize());
+        assertEquals(true, valid.isValidBlockChain());
+        assertEquals(true, valid.removeLast());
+        assertEquals(1, valid.getSize());
+        valid.append(valid.mine(-110));
+        valid.append(valid.mine(10));
+        assertEquals(3, valid.getSize());
+        assertEquals(true, valid.isValidBlockChain());
+    }
 }
