@@ -81,8 +81,6 @@ public class BlockChain {
     public void append(Block blk) throws IllegalArgumentException {
         if (!blk.getPrevHash().equals(this.last.data.getHash())
                 || !blk.getHash().isValid()
-                || this.alice + blk.getAmount() < 0
-                || this.bob - blk.getAmount() < 0
                 || blk.getNum() != this.last.data.getNum() + 1) {
             throw new IllegalArgumentException();
         } else {
@@ -162,7 +160,7 @@ public class BlockChain {
      * Prints Alice and Bob's respective balances
      */
     public void printBalances() {
-        System.out.format("Alice: %d, Bob: %d", this.alice, this.bob);
+        System.out.format("Alice: %d, Bob: %d\n", this.alice, this.bob);
     }
 
     /**

@@ -49,7 +49,7 @@ public class BlockChainDriver {
                     stillRunning = false;
                 } else {
                     System.out.println("Unrecognized command!");
-                    System.out.println("Enter \\\"help\\\" to see a list of valid commands.");
+                    System.out.println("Enter \"help\" to see a list of valid commands.");
                 }
             }
         }
@@ -76,12 +76,12 @@ public class BlockChainDriver {
 
     private static void printCommands() {
         System.out.println("Valid commands:");
-        System.out.println("\tmine: discovers the nonce for a given transaction");
-        System.out.println("\tappend: appends a new block onto the end of the chain");
-        System.out.println("\tremove: removes the last block from the end of the chain");
-        System.out.println("\tcheck: checks that the block chain is valid");
-        System.out.println("\treport: reports the balances of Alice and Bob");
-        System.out.println("\thelp: prints this list of commands");
-        System.out.println("\tquit: quits the program");
+        System.out.println("    mine: discovers the nonce for a given transaction");
+        System.out.println("    append: appends a new block onto the end of the chain");
+        System.out.println("    remove: removes the last block from the end of the chain");
+        System.out.println("    check: checks that the block chain is valid");
+        System.out.println("    report: reports the balances of Alice and Bob");
+        System.out.println("    help: prints this list of commands");
+        System.out.println("    quit: quits the program");
     }
 }
