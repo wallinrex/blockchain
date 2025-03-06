@@ -8,6 +8,7 @@ Author: Rex Wallin
 *   Java Byte docs: https://docs.oracle.com/javase/8/docs/api/java/lang/Byte.html
 *   Java Formatter docs: https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax
 *   Java Scanner docs: https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html
+*   VSCode debugging configuration : https://code.visualstudio.com/docs/editor/debugging-configuration
 
 ## Git Log
 
