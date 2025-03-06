@@ -15,6 +15,7 @@ public class Hash {
 
     /**
      * Getter for the data field of the Hash
+     * 
      * @return the byte array data
      */
     public byte[] getData() {
@@ -22,7 +23,9 @@ public class Hash {
     }
 
     /**
-     * Determines whether the hash is valid based on whether the first three bytes are 0
+     * Determines whether the hash is valid based on whether the first three bytes
+     * are 0
+     * 
      * @return true if the first three bytes are 0, false otherwise
      */
     public boolean isValid() {
@@ -35,6 +38,7 @@ public class Hash {
 
     /**
      * Converts the hash to a hexidecimal representation
+     * 
      * @return a string containing said hexidecimal integer
      */
     public String toString() {
@@ -47,6 +51,7 @@ public class Hash {
 
     /**
      * Compares this hash to another object for equality
+     * 
      * @param other the object to which this hash is compared
      * @return true if other is a hash with an identical data array, false otherwise
      */

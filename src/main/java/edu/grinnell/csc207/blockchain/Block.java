@@ -40,16 +40,19 @@ public class Block {
     }
 
     /**
-     * Calculates the hash for a block based on its number, the amount of the corresponding
+     * Calculates the hash for a block based on its number, the amount of the
+     * corresponding
      * transaction, the previous hash (if applicable), and the nonce
+     * 
      * @return the calculated hash in a byte array
-     * @throws NoSuchAlgorithmException if MessageDigest.getInstance is passed an invalid algorithm
+     * @throws NoSuchAlgorithmException if MessageDigest.getInstance is passed an
+     *                                  invalid algorithm
      */
     private byte[] calculateHash() throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("sha-256");
         md.update(ByteBuffer.allocate(4).putInt(this.num).array());
         md.update(ByteBuffer.allocate(4).putInt(this.amount).array());
-        if (this.num != 1) {
+        if (this.num != 0) {
             md.update(this.prevHash.getData());
         }
         md.update(ByteBuffer.allocate(8).putLong(this.nonce).array());
@@ -59,6 +62,7 @@ public class Block {
 
     /**
      * Getter for the num field of a block
+     * 
      * @return the block's number
      */
     public int getNum() {
@@ -67,6 +71,7 @@ public class Block {
 
     /**
      * Getter for the amount field of a block
+     * 
      * @return the amount of the transaction the block records
      */
     public int getAmount() {
@@ -75,6 +80,7 @@ public class Block {
 
     /**
      * Getter for the nonce field of a block
+     * 
      * @return the block's nonce
      */
     public long getNonce() {
@@ -83,6 +89,7 @@ public class Block {
 
     /**
      * Getter for the prevHash field of a block
+     * 
      * @return the hash of the previous block
      */
     public Hash getPrevHash() {
@@ -91,6 +98,7 @@ public class Block {
 
     /**
      * Getter for the currHash field of a block
+     * 
      * @return the block's hash
      */
     public Hash getHash() {
@@ -99,11 +107,17 @@ public class Block {
 
     /**
      * Returns a string representation of the block
+     * 
      * @return a string containing all the fields of the block
      */
     public String toString() {
-        return String.format("Block %d (Amount: %d, Nonce: %d, prevHash: %s, hash: %s)",
-                             this.num, this.amount, this.nonce, this.prevHash.toString(),
-                             this.currHash.toString());
-    } // this is going to have problems with the first block
+        if (this.prevHash == null) {
+            return String.format("Block %d (Amount: %d, Nonce: %d, prevHash: null, hash: %s)",
+                    this.num, this.amount, this.nonce, this.currHash.toString());
+        } else {
+            return String.format("Block %d (Amount: %d, Nonce: %d, prevHash: %s, hash: %s)",
+                    this.num, this.amount, this.nonce, this.prevHash.toString(),
+                    this.currHash.toString());
+        }
+    }
 }
